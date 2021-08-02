@@ -4,7 +4,7 @@ pipeline {
         stage('build'){
             steps{
                 sh """
-                 docker build -t mostafasa3ed/hello   
+                 docker build -t mostafasa3ed/hello .   
                 """
             }
         }
