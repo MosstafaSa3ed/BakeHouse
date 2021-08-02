@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    enviroment {
+    environment {
 	DOCKERHUB_CREDENTIALS = credentials('mostafasa3ed-dockerhub')
     }
     stages {
