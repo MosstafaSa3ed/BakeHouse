@@ -3,24 +3,21 @@ pipeline {
     stages {
         stage('deployment'){
             steps{
-                sh 
-                """
+                sh """
                  kubectl apply -f deployment-dev.yml   
                 """
             }
         }
         stage('load balancer'){
             steps{
-                sh 
-                """
+                sh """
                  kubectl apply -f load-balancer.yml   
                 """
             }
         }
         stage('get external IP'){
             steps{
-                sh 
-                """
+                sh """
                  kubectl get service -n dev  
                 """
             }
