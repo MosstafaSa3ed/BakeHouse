@@ -4,7 +4,7 @@ pipeline {
         stage('deployment'){
             steps{
                 sh """
-                 kubectl apply -f deployment-dev.yml   
+                 kubectl apply -f deployment-dev.yml --kubeconfig=/home/msafcicu/.kube/config   
                 """
             }
         }
