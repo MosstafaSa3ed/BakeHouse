@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bake
+  namespace: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      web: bake
+  template:
+    metadata:
+      labels:
+        web: bake
+    spec:
+      containers:
+      - name: bb-site
+        image: mostafasa3ed/hello
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bake-entrypoint
+  namespace: test
+spec:
+  type: NodePort
+  selector:
+    web: bake
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30001
