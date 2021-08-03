@@ -4,21 +4,21 @@ pipeline {
         stage('deployment'){
             steps{
                 sh """
-                 kubectl apply -f deployment-dev.yml --kubeconfig=/home/msafcicu/.kube/config   
+                 sudo kubectl apply -f deployment-dev.yml --kubeconfig=/home/msafcicu/.kube/config   
                 """
             }
         }
         stage('load balancer'){
             steps{
                 sh """
-                 kubectl apply -f load-balancer.yml   
+                 sudo kubectl apply -f load-balancer.yml --kubeconfig=/home/msafcicu/.kube/config  
                 """
             }
         }
         stage('get external IP'){
             steps{
                 sh """
-                 kubectl get service -n dev  
+                 sudo kubectl get service -n dev --kubeconfig=/home/msafcicu/.kube/config 
                 """
             }
         }
